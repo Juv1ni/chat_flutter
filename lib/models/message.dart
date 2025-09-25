@@ -1,12 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // Importa o Timestamp do Firestore
 
+// Classe que representa uma mensagem no chat
 class Message {
-  final String senderID;
-  final String senderEmail;
-  final String receiverID;
-  final String message;
-  final Timestamp timestamp;
+  final String senderID; // ID do usuário que enviou a mensagem
+  final String senderEmail; // E-mail do remetente
+  final String receiverID; // ID do usuário que vai receber a mensagem
+  final String message; // Texto da mensagem
+  final Timestamp
+  timestamp; // Data e hora em que a mensagem foi enviada (Firestore)
 
+  // Construtor da classe
   Message({
     required this.senderID,
     required this.senderEmail,
@@ -15,6 +18,8 @@ class Message {
     required this.timestamp,
   });
 
+  // Converte o objeto Message em um Map<String, dynamic>
+  // -> usado para salvar a mensagem no Firestore
   Map<String, dynamic> toMap() {
     return {
       'senderID': senderID,
